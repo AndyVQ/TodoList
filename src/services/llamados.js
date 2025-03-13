@@ -33,4 +33,39 @@ async function getData(endpoint) {
     console.error(error);
   }
 }
-export { getData, postData };
+
+/*
+ El método patch, actualiza la información que esté guardada en el endpoint
+*/
+async function patchData(obj, endpoint, id) {
+  try {
+    const peticion = await fetch(`http://localhost:3000/${endpoint}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    const datos = await peticion.json();
+    console.log(datos);
+    return datos;
+  } catch (error) {
+    console.error(error);
+  }
+}
+async function deleteData(endpoint,id) {
+  try {
+    const peticion = await fetch(`http://localhost:3000/${endpoint}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const datos = await peticion.json();
+    console.log(datos);
+    return datos;
+  } catch (error) {
+    console.error(error);
+  }
+}
+export { getData, postData, patchData, deleteData };

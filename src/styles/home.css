@@ -1,0 +1,118 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+h1.titulo-principal {
+  font-size: 2.5rem; 
+  color: #007acc; 
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+h2.contador-tareas {
+  font-size: 1.2rem; 
+  color: #007acc;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+input.input-agregar-tarea {
+  padding: 10px;
+  font-size: 1rem; 
+  border: 2px solid #007acc;
+  border-radius: 20px;
+  width: 280px; 
+  margin-bottom: 15px;
+}
+
+input.input-agregar-tarea:focus {
+  border-color: #00bcd4; 
+  outline: none;
+}
+
+
+button.boton-agregar-tarea {
+  background-color: #007acc;
+  color: white;
+  padding: 8px; 
+  font-size: 15px; 
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 130px; 
+  margin-left: 10px;
+}
+
+button.boton-agregar-tarea:hover {
+  background-color: #00bcd4; 
+}
+
+button.boton-agregar-tarea:active {
+  background-color: #0097a7; 
+}
+
+
+ul.lista-tareas {
+  list-style-type: none;
+  padding: 0;
+  width: 305px; 
+  margin-top: 20px;
+}
+
+li.item-tarea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0f7fa; 
+  margin: 8px 0; 
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+span.texto-tarea {
+  font-size: 1rem; 
+  color: #333;
+  flex: 1;
+}
+
+
+button.boton-editar,
+button.boton-eliminar,
+button.boton-marcar-completada {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 6px 12px; 
+  margin-left: 5px; 
+  border-radius: 20px;
+  cursor: pointer;  
+}
+
+button.boton-editar:hover,
+button.boton-eliminar:hover,
+button.boton-marcar-completada:hover {
+  background-color: #00bcd4; 
+}
+
+button.boton-editar:active,
+button.boton-eliminar:active,
+button.boton-marcar-completada:active {
+  background-color: #0097a7; 
+}
+
+
+span.texto-tarea[style*="line-through"] {
+  text-decoration: line-through;
+  color: #aaa; 
+}

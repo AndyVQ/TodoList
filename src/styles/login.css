@@ -9,14 +9,14 @@ body {
     margin: 0;
   }
   
-  .titulo-registro {
+  .titulo-login {
     font-size: 2rem;
     color: #007acc;
     text-align: center;
     margin-bottom: 20px;
   }
   
-  .formulario-registro {
+  .formulario-login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,6 @@ body {
     border: 2px solid #007acc;
     border-radius: 20px;
     font-size: 1rem;
-    
   }
   
   .input-nombre:focus,
@@ -44,7 +43,7 @@ body {
     outline: none;
   }
   
-  .boton-registrarse {
+  .boton-iniciar-sesion {
     background-color: #007acc;
     color: white;
     padding: 10px;
@@ -55,22 +54,21 @@ body {
     width: 100%;
   }
   
-  .boton-registrarse:hover {
+  .boton-iniciar-sesion:hover {
     background-color: #00bcd4;
   }
   
-  .boton-registrarse:active {
+  .boton-iniciar-sesion:active {
     background-color: #0097a7;
   }
   
-  .enlace-login {
+  .enlace-registro {
     color: #007acc;
     text-decoration: none;
     margin-top: 10px;
   }
   
-  .enlace-login:hover {
+  .enlace-registro:hover {
     text-decoration: underline;
   }
-    
   

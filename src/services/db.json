@@ -9,58 +9,22 @@
       "id": "34f7",
       "nombre": "dsadad",
       "contrasena": "addasda"
+    },
+    {
+      "id": "e135",
+      "nombre": "hola",
+      "contrasena": "hola"
+    },
+    {
+      "id": "8aff",
+      "nombre": "betza",
+      "contrasena": "1234"
+    },
+    {
+      "id": "2d34",
+      "nombre": "betza",
+      "contrasena": "1234"
     }
   ],
-  "tareas": [
-    {
-      "id": "af61",
-      "tarea": "AVIÓN",
-      "completada": false
-    },
-    {
-      "id": "5095",
-      "tarea": "abc",
-      "completada": false
-    },
-    {
-      "id": "13eb",
-      "tarea": "hola",
-      "completada": false
-    },
-    {
-      "id": "f684",
-      "tarea": "hola",
-      "completada": false
-    },
-    {
-      "id": "3ec7",
-      "tarea": "hola",
-      "completada": false
-    },
-    {
-      "id": "93df",
-      "tarea": "lol",
-      "completada": false
-    },
-    {
-      "id": "279e",
-      "tarea": "hola",
-      "completada": false
-    },
-    {
-      "id": "0c86",
-      "tarea": "hola",
-      "completada": false
-    },
-    {
-      "id": "8e4d",
-      "tarea": "P E N E",
-      "completada": false
-    },
-    {
-      "id": "d4d0",
-      "tarea": "G O R D O (barry)",
-      "completada": false
-    }
-  ]
+  "tareas": []
 }

@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
-import { getData, postData } from "../services/llamados";
+import { deleteData, getData, patchData, postData } from "../services/llamados";
+import "../styles/home.css";
 
 function Home() {
   const [tarea, setTarea] = useState("");
   const [tareas, setTareas] = useState([]);
   const [recarga, setRecarga] = useState(false);
+  const [contador, setContador] = useState(0);
+
   useEffect(() => {
     async function traerTareas() {
       const tareasGuardadas = await getData("tareas");
       setTareas(tareasGuardadas);
     }
-    console.log(tareas);
+    async function contadorTareas() {
+      const tareasCompletadas = await getData("tareas");
+      const filtro = tareasCompletadas.filter(
+        (tarea) => tarea.completada === true
+      );
+      setContador(filtro.length);
+    }
+    contadorTareas();
     traerTareas();
-    
-  }, [recarga]);
+  }, [recarga, tareas]);
 
-  const addTask = async (e) => {
+  const agregarTarea = async (e) => {
     e.preventDefault();
     if (tarea.trim() === "") {
       alert("Agregue una tarea");
@@ -30,40 +39,42 @@ function Home() {
     setRecarga(!recarga);
   };
 
-  const editarTarea = (id, nuevaTarea) => {
-    const nuevasTareas = tareas.map((t) =>
-      t.id === id ? { ...t, tarea: nuevaTarea } : t
-    );
-    setTareas(nuevasTareas);
+  const editarTarea = async (id, nuevaTarea) => {
+    const tareaEditar = {
+      tarea: nuevaTarea,
+    };
+    await patchData(tareaEditar, "tareas", id);
   };
 
-  const eliminarTarea = (id) => {
-    const nuevasTareas = tareas.filter((t) => t.id !== id);
-    setTareas(nuevasTareas);
+  const eliminarTarea = async (id) => {
+    await deleteData("tareas", id);
   };
 
-  const marcarComoCompletada = (id) => {
-    const nuevasTareas = tareas.map((t) =>
-      t.id === id ? { ...t, completada: !t.completada } : t
-    );
-    setTareas(nuevasTareas);
+  const marcarComoCompletada = async (id, index) => {
+    await patchData({ completada: !tareas[index].completada }, "tareas", id);
+    setRecarga(!recarga);
   };
 
   return (
     <>
-      <h1>To do list</h1>
+      <h1 className="titulo-principal">Lista de Tareas</h1>
+      <h2 className="contador-tareas">{contador}</h2>
       <input
         type="text"
-        placeholder="escribe tarea"
+        placeholder="Escribe tarea"
+        className="input-agregar-tarea"
         value={tarea}
         onChange={(e) => setTarea(e.target.value)}
       />
-      <button onClick={addTask}>Agregar Tarea</button>
+      <button onClick={agregarTarea} className="boton-agregar-tarea">
+        Agregar Tarea
+      </button>
 
-      <ul>
-        {tareas.map((tarea) => (
-          <li key={tarea.id}>
+      <ul className="lista-tareas">
+        {tareas.map((tarea, index) => (
+          <li key={tarea.id} className="item-tarea">
             <span
+              className="texto-tarea"
               style={{
                 textDecoration: tarea.completada ? "line-through" : "none",
               }}
@@ -71,13 +82,22 @@ function Home() {
               {tarea.tarea}
             </span>
             <button
+              className="boton-editar"
               onClick={() => editarTarea(tarea.id, prompt("Nueva tarea:"))}
             >
               Editar
             </button>
-            <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-            <button onClick={() => marcarComoCompletada(tarea.id)}>
-              {tarea.completada ? "Desenmarcar" : "Completar"}
+            <button
+              className="boton-eliminar"
+              onClick={() => eliminarTarea(tarea.id)}
+            >
+              Eliminar
+            </button>
+            <button
+              className="boton-marcar-completada"
+              onClick={() => marcarComoCompletada(tarea.id, index)}
+            >
+              {tarea.completada ? "Desmarcar" : "Completar"}
             </button>
           </li>
         ))}
@@ -87,3 +107,4 @@ function Home() {
 }
 
 export default Home;
+
